@@ -93,4 +93,31 @@ Action: a forks e
 
 您可以使用不同的随机种子（`-s` 标志）或者不指定随机种子以获得不同的随机生成序列。
 
-您可以使用 `-f` 标志更改分支操作的百分比
+您可以使用 `-f` 标志更改分支操作的百分比与退出相比）。
+
+您可以使用 `-A` 标志指定特定的分支和退出序列。例如，要使 `a` 分支 `b`，`b` 然后分支 `c`；`c` 退出，最后，`a` 分支 `d`，只需键入（我们在这里显示 `-c` 以解决问题）：
+
+<pre><div class="bg-black rounded-md"><div class="flex items-center relative text-gray-200 bg-gray-800 dark:bg-token-surface-primary px-4 py-2 text-xs font-sans justify-between rounded-t-md"><span>sh</span><span class="" data-state="closed"><button class="flex gap-1 items-center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="icon-sm"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 4C10.8954 4 10 4.89543 10 6H14C14 4.89543 13.1046 4 12 4ZM8.53513 4C9.22675 2.8044 10.5194 2 12 2C13.4806 2 14.7733 2.8044 15.4649 4H17C18.6569 4 20 5.34315 20 7V19C20 20.6569 18.6569 22 17 22H7C5.34315 22 4 20.6569 4 19V7C4 5.34315 5.34315 4 7 4H8.53513ZM8 6H7C6.44772 6 6 6.44772 6 7V19C6 19.5523 6.44772 20 7 20H17C17.5523 20 18 19.5523 18 19V7C18 6.44772 17.5523 6 17 6H16C16 7.10457 15.1046 8 14 8H10C8.89543 8 8 7.10457 8 6Z" fill="currentColor"></path></svg>Copy code</button></span></div><div class="p-4 overflow-y-auto"><code class="!whitespace-pre hljs language-sh">prompt> ./fork.py -A a+b,b+c,c-,a+d -c
+
+                           进程树:
+                               a
+
+Action: a forks b
+                               a
+                               └── b
+Action: b forks c
+                               a
+                               └── b
+                                   └── c
+Action: c EXITS
+                               a
+                               └── b
+Action: a forks d
+                               a
+                               ├── b
+                               └── d
+</code></div></div></pre>
+
+您只能使用 `-F` 标志显示最终输出（然后查看是否能猜到所有的中间步骤）。
+
+最后，您可以使用 `-P` 标志更改树的打印样式。
