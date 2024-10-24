@@ -1,4 +1,3 @@
-
 # Overview
 
 This program, scheduler.py, allows you to see how different schedulers perform
@@ -16,6 +15,7 @@ prompt> ./scheduler.py -p FIFO -j 3 -s 100
 ```
 
 If that doesn't work, try this:
+
 ```sh
 prompt> python ./scheduler.py -p FIFO -j 3 -s 100
 ```
@@ -40,7 +40,7 @@ Here is the job list, with the run time of each job:
 
 Compute the turnaround time, response time, and wait time for each job.  When
 you are done, run this program again, with the same arguments, but with -c,
-which will thus provide you with the answers. You can use -s <somenumber> or
+which will thus provide you with the answers. You can use -s `<somenumber>` or
 your own job list (-l 10,15,20 for example) to generate different problems for
 yourself.
 
@@ -120,7 +120,7 @@ the jobs lengths are taken from your comma-separated list.
 Of course, more interesting things happen when you use SJF (shortest-job
 first) or even RR (round robin) schedulers. Try them and see!
 
-And you can always run 
+And you can always run
 
 ```sh
 prompt> ./scheduler.py -h
